@@ -19,6 +19,8 @@
     <h2>Project Start & Small Update</h2>
 <p class="date">13 Aug 2024</p>
 
+<h1 id="small-life-update">Small Life Update</h1>
+
 <p>Long time no post!</p>
 
 <p>It’s been a minute since my last post. Things have been pretty hectic with
@@ -31,6 +33,8 @@ This will also be the first time I am attempting to attach a bunch of assets in 
 markdown so bear with me if there are any mistakes haha.
 Anyways, as promised here’s my first technical post!</p>
 
+<h1 id="technical-portion">Technical Portion</h1>
+<h2 id="assets--map">Assets &amp; Map</h2>
 <p>This is the start of my TRPG game. This first project I’m doing is mostly a practice
 project just to familiarize myself with the environment and scripting language
 because I decided to work on Godot, which is entirely new to me. I didn’t think too
@@ -68,7 +72,9 @@ animations since that’s all I really needed. Oh before I continue, for the map
 to give credit to <a href="https://kenmi-art.itch.io/">Kenmi</a> and for the character, credits to 
 <a href="https://bagong-games.itch.io/">Bagong Games</a>. Okay! So now that that’s outta the way, the first
 step for me was figuring out how to select a tile similar to your classic TRPGs such as Final
-Fantasy or Fire Emblem. In Godot, the standard script loads the ready and process functions. So what
+Fantasy or Fire Emblem.</p>
+<h2 id="tile-selector">Tile Selector</h2>
+<p>In Godot, the standard script loads the ready and process functions. So what
 exactly do those do? The ready function is called when the node enters the scene tree for the first time
 in our case, that will be automatically when the game is launched. The process function is called every
 frame so it is constantly running. Since my map is prebuilt, it already exists before the scene is launched
@@ -91,6 +97,7 @@ where my temporary assets are living. Which results in the desired output.</p>
 
 <p><img src="../../../assets/img/projects/practice_game/working.gif" alt="selector" /></p>
 
+<h2 id="player-ui">Player UI</h2>
 <p>Now, I’ve essentially set up the map and its UI properly for a 2D grid game, so onto the character. So for basic set up, 
 I create a CharacterBody2D node as a child of the current scene and within this node are 2 more children, an AnimatedSprite2D and CollisionShape2D. The animated sprite child is to give the player a visual and the collision shape is an invisible node which determines
 where the character collides with objects. An example to make this easier to visualize is hitboxes in FPS, specifically,
@@ -102,8 +109,9 @@ of the character. For now, the default animation is just the character idling. G
 sheet and create custom tiles from that sheet which makes it quite simple to load in separate frames for each animation. So
 here’s a little demonstration of the animations I am using for each action currently in the game. <br />
 <img src="../../../assets/img/projects/practice_game/idle.gif" alt="idle animation" />
-<img src="../../../assets/img/projects/practice_game/running.gif" alt="running animation" /> <br />
-Now we just place the character where we want it to start and move onto figuring out movement. So for movement, there’s a
+<img src="../../../assets/img/projects/practice_game/running.gif" alt="running animation" /></p>
+<h2 id="player-movement-pathfinding--animation">Player Movement, Pathfinding, &amp; Animation</h2>
+<p>Now we just place the character where we want it to start and move onto figuring out movement. So for movement, there’s a
 pretty nifty class called ‘AStarGrid2D’ which is an implementation of A*, a pathfinding algorithm, to find the shortest path
 between two points on a partial 2D grid. So with this, we set up the region of the grid and set the cell_size to make
 the 2D movement more smooth. Then, if you noticed above, I have set water tiles which the player should not be able to

@@ -2,6 +2,8 @@
 layout: post
 --- 
 
+# Small Life Update
+
 Long time no post!
 
 It's been a minute since my last post. Things have been pretty hectic with
@@ -14,6 +16,8 @@ This will also be the first time I am attempting to attach a bunch of assets in 
 markdown so bear with me if there are any mistakes haha.
 Anyways, as promised here's my first technical post!   
    
+# Technical Portion   
+## Assets & Map   
 This is the start of my TRPG game. This first project I'm doing is mostly a practice
 project just to familiarize myself with the environment and scripting language
 because I decided to work on Godot, which is entirely new to me. I didn't think too
@@ -38,7 +42,9 @@ animations since that's all I really needed. Oh before I continue, for the map a
 to give credit to [Kenmi](https://kenmi-art.itch.io/) and for the character, credits to 
 [Bagong Games](https://bagong-games.itch.io/). Okay! So now that that's outta the way, the first
 step for me was figuring out how to select a tile similar to your classic TRPGs such as Final
-Fantasy or Fire Emblem. In Godot, the standard script loads the ready and process functions. So what
+Fantasy or Fire Emblem.   
+## Tile Selector   
+In Godot, the standard script loads the ready and process functions. So what
 exactly do those do? The ready function is called when the node enters the scene tree for the first time
 in our case, that will be automatically when the game is launched. The process function is called every
 frame so it is constantly running. Since my map is prebuilt, it already exists before the scene is launched
@@ -61,6 +67,7 @@ where my temporary assets are living. Which results in the desired output.
    
 ![selector](../../../assets/img/projects/practice_game/working.gif)   
    
+## Player UI   
 Now, I've essentially set up the map and its UI properly for a 2D grid game, so onto the character. So for basic set up, 
 I create a CharacterBody2D node as a child of the current scene and within this node are 2 more children, an AnimatedSprite2D and CollisionShape2D. The animated sprite child is to give the player a visual and the collision shape is an invisible node which determines
 where the character collides with objects. An example to make this easier to visualize is hitboxes in FPS, specifically,
@@ -73,6 +80,7 @@ sheet and create custom tiles from that sheet which makes it quite simple to loa
 here's a little demonstration of the animations I am using for each action currently in the game.   
 ![idle animation](../../../assets/img/projects/practice_game/idle.gif)
 ![running animation](../../../assets/img/projects/practice_game/running.gif)   
+## Player Movement, Pathfinding, & Animation   
 Now we just place the character where we want it to start and move onto figuring out movement. So for movement, there's a
 pretty nifty class called 'AStarGrid2D' which is an implementation of A*, a pathfinding algorithm, to find the shortest path
 between two points on a partial 2D grid. So with this, we set up the region of the grid and set the cell_size to make
